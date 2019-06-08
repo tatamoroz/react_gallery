@@ -1,11 +1,15 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './style.scss';
 
 function Header() {
 
   return (
-    <div className="Header">
-      <h1>Hello Header</h1>
+    <div className="header">
+    <ul>
+      <li><NavLink to="/" exact >Home</NavLink></li>
+      <li><NavLink to="/gallery">Gallery</NavLink></li>
+    </ul>
     </div>
   );
 }
