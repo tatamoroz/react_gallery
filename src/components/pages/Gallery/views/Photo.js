@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Photo(props) {
 
-    const { urls: { thumb }, updated_at, alt_description, likes } = props.data;
+    const { id, urls: { thumb }, updated_at, alt_description, likes } = props.data;
 
     const renderDate = () => {
         const date = new Date(updated_at);
@@ -11,9 +12,11 @@ function Photo(props) {
 
     return (
         <div className="photo">
-        <span>{likes}</span>
-        <i>{renderDate()}</i>
-            <img src={thumb} alt={alt_description} />
+            <span>{likes}</span>
+            <i>{renderDate()}</i>
+            <NavLink to={`photo/${id}`} >
+                <img src={thumb} alt={alt_description} />
+            </NavLink>
             <p>{alt_description}</p>
         </div>
     );
