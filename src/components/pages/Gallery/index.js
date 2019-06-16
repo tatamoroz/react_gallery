@@ -3,10 +3,11 @@ import List from './views/List';
 import { connect } from 'react-redux';
 import { getPhotos } from '../../../utils/PhotoApiService';
 import './style.scss';
+import { id } from 'postcss-selector-parser';
 
 function Gallery(props) {
 
-  const { setPhotos, photos } = props;
+  const { setPhotos, photos, setFavorite } = props;
 
   useEffect(() => {
 
@@ -19,7 +20,7 @@ function Gallery(props) {
 
   return (
     <div className="gallery">
-    <List photos={photos} />
+    <List photos={photos} setFavorite={setFavorite}/>
     </div>
   );
 }
@@ -29,7 +30,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setPhotos: photos => dispatch({ type: 'SET_PHOTOS', photos })
+  setPhotos: photos => dispatch({ type: 'SET_PHOTOS', photos }),
+  setFavorite: photo => dispatch({ type: 'SET_FAVORITE', photo })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

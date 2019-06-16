@@ -11,12 +11,12 @@ function Photo(props) {
     }
 
     const addFavorite = () => {
-        props.setFavorite(props.data);
+        props.removeFavorite(id);
     }
 
     return (
         <div className="photo">
-            <b onClick={addFavorite}>+</b>
+            <b onClick={addFavorite}>-</b>
             <span>{likes}</span>
             <i>{renderDate()}</i>
             <NavLink to={`photo/${id}`} >
